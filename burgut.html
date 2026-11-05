@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#263f53">
+  <title>Burgut — kunlik yordamchi</title>
+  <meta name="description" content="Burgut: har kuni 5 ta turkcha va 10 ta inglizcha so'z, xarjatlar nazorati, kunlik rejalar, haftalik yangiliklar va futbol. Aobod fermasi uchun shaxsiy yordamchi.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo"><img src="logo.svg" alt="" width="34" height="34"></span>
+      <div class="brand-text">
+        <h1>Burgut</h1>
+        <p id="farm-name">Shaxsiy yordamchi</p>
+      </div>
+    </div>
+    <button id="btn-refresh" class="icon-btn" title="Yangilash" aria-label="Yangilash">
+      <span id="refresh-icon">↻</span>
+    </button>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist">
+    <button class="tab on" data-tab="today" role="tab"><span class="nav-icon" aria-hidden="true">⌂</span><span>Bugun</span></button>
+    <button class="tab" data-tab="words" role="tab"><span class="nav-icon" aria-hidden="true">Aa</span><span>So'zlar</span> <span id="word-badge" class="tab-badge" hidden>15</span></button>
+    <button class="tab" data-tab="expenses" role="tab"><span class="nav-icon" aria-hidden="true">₺</span><span>Xarajat</span></button>
+    <button class="tab" data-tab="plans" role="tab"><span class="nav-icon" aria-hidden="true">✓</span><span>Rejalar</span> <span id="plan-badge" class="tab-badge" hidden>0</span></button>
+    <button class="tab" data-tab="news" role="tab"><span class="nav-icon" aria-hidden="true">◎</span><span>Yangilik</span></button>
+  </nav>
+
+  <main id="main">
+    <div class="dashboard-heading"><div><p>BURGUT · SHAXSIY MAKON</p><h2>Dashboard</h2></div><span class="dashboard-mark" aria-hidden="true">✦</span></div>
+    <section class="view on" id="view-today" role="tabpanel"></section>
+    <section class="view" id="view-words" role="tabpanel"></section>
+    <section class="view" id="view-expenses" role="tabpanel"></section>
+    <section class="view" id="view-plans" role="tabpanel"></section>
+    <section class="view" id="view-news" role="tabpanel"></section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="words.js"></script>
+  <script src="cloud-config.js"></script>
+  <script src="cloud-sync.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
