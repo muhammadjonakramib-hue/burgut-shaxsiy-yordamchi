@@ -16,6 +16,7 @@ export default async function handler(request) {
   if(request.method!=='GET')return json({error:'Method not allowed'},405);
   const url=new URL(request.url);
   try {
+    if(url.pathname==='/api/daily-push-config')return json({publicKey:process.env.VAPID_PRIVATE_KEY&&process.env.SUPABASE_SERVICE_ROLE_KEY?process.env.VAPID_PUBLIC_KEY||null:null});
     if(url.pathname==='/api/config')return json({app:{name:'Burgut'},farm:{name:'Shaxsiy yordamchi'},telegram:{configured:false}});
     if(url.pathname==='/api/football')return json(await cached('football',60000,()=>getFootball()));
     if(url.pathname==='/api/weekly' || url.pathname==='/api/weekly.txt'){

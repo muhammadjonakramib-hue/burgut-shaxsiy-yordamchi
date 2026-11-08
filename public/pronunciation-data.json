@@ -1,0 +1,1676 @@
+{
+  "retrievedAt": "2026-11-07T13:18:56.836Z",
+  "provider": "https://dictionaryapi.dev/",
+  "words": {
+    "achieve": {
+      "word": "achieve",
+      "phonetic": "/əˈtʃiːv/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "allow": {
+      "word": "allow",
+      "phonetic": "/əˈlaʊ/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/allow-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9027925",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "afford": {
+      "word": "afford",
+      "phonetic": "/əˈfɔːd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "borrow": {
+      "word": "borrow",
+      "phonetic": "/ˈbɔɹoʊ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "careful": {
+      "word": "careful",
+      "phonetic": "/ˈkɛːfəl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "career": {
+      "word": "career",
+      "phonetic": "/kəˈɹɪə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "cause": {
+      "word": "cause",
+      "phonetic": "/kɔːz/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "compare": {
+      "word": "compare",
+      "phonetic": "/kəmˈpɛə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "consider": {
+      "word": "consider",
+      "phonetic": "/kənˈsɪdə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "deliver": {
+      "word": "deliver",
+      "phonetic": "/dɪˈlɪvə(ɹ)/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "agree": {
+      "word": "agree",
+      "phonetic": "/əˈɡɹi/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "avoid": {
+      "word": "avoid",
+      "phonetic": "/əˈvɔɪd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "budget": {
+      "word": "budget",
+      "phonetic": "/ˈbʌdʒ.ɪt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "celebrate": {
+      "word": "celebrate",
+      "phonetic": "/ˈsɛl.ə.bɹeɪt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "challenge": {
+      "word": "challenge",
+      "phonetic": "/ˈtʃæl.əndʒ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "choose": {
+      "word": "choose",
+      "phonetic": "/t͡ʃuːz/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "complain": {
+      "word": "complain",
+      "phonetic": "/kəmˈpleɪn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "decide": {
+      "word": "decide",
+      "phonetic": "/dɪˈsaɪd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "continue": {
+      "word": "continue",
+      "phonetic": "/kənˈtɪnjuː/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "depend": {
+      "word": "depend",
+      "phonetic": "/dɪˈpɛnd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "describe": {
+      "word": "describe",
+      "phonetic": "/dəˈskɹaɪb/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "develop": {
+      "word": "develop",
+      "phonetic": "/dɛˈvɛ.ləp/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "earn": {
+      "word": "earn",
+      "phonetic": "/ɜːn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "efficient": {
+      "word": "efficient",
+      "phonetic": "/əˈfɪʃənt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "encourage": {
+      "word": "encourage",
+      "phonetic": "/ɪnˈkʌɹɪdʒ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "expect": {
+      "word": "expect",
+      "phonetic": "/ɛkˈspɛkt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "environment": {
+      "word": "environment",
+      "phonetic": "/-mɪnt/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/environment-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014415",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "experience": {
+      "word": "experience",
+      "phonetic": "/ɪkˈspɪə.ɹɪəns/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/experience-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=88517618",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "explain": {
+      "word": "explain",
+      "phonetic": "/ɛkˈspleɪn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "fail": {
+      "word": "fail",
+      "phonetic": "/feɪl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "familiar": {
+      "word": "familiar",
+      "phonetic": "/fəˈmɪl.i.ə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "confident": {
+      "word": "confident",
+      "phonetic": "/ˈkɒn.fɪ.dənt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "connect": {
+      "word": "connect",
+      "phonetic": "/kəˈnɛkt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "convenient": {
+      "word": "convenient",
+      "phonetic": "/kənˈviːniənt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "cost": {
+      "word": "cost",
+      "phonetic": "/ˈkɒst/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/cost-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9027985",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "cover": {
+      "word": "cover",
+      "phonetic": "/ˈkʌvə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "create": {
+      "word": "create",
+      "phonetic": "/kɹiːˈeɪt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "customer": {
+      "word": "customer",
+      "phonetic": "/ˈkʌstəmə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "damage": {
+      "word": "damage",
+      "phonetic": "/ˈdæmɪdʒ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "deal": {
+      "word": "deal",
+      "phonetic": "/diːl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "demand": {
+      "word": "demand",
+      "phonetic": "/dɪˈmɑːnd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "detail": {
+      "word": "detail",
+      "phonetic": "/dɪˈteɪl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "different": {
+      "word": "different",
+      "phonetic": "/ˈdɪf.(ə)ɹ.ənt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "difficult": {
+      "word": "difficult",
+      "phonetic": "/ˈdɪfɪkəlt/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/difficult-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014364",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "direct": {
+      "word": "direct",
+      "phonetic": "/d(a)ɪˈɹɛkt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "discover": {
+      "word": "discover",
+      "phonetic": "/dɪsˈkʊvə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "discuss": {
+      "word": "discuss",
+      "phonetic": "/dɪsˈkʊs/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "disease": {
+      "word": "disease",
+      "phonetic": "/dɪˈziːz/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "double": {
+      "word": "double",
+      "phonetic": "/ˈdʌb.əl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "drop": {
+      "word": "drop",
+      "phonetic": "/dɹɒp/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "hope": {
+      "word": "hope",
+      "phonetic": "/həʊp/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "imagine": {
+      "word": "imagine",
+      "phonetic": "/ɪˈmædʒ.ɪn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "important": {
+      "word": "important",
+      "phonetic": "/ɪmˈpɔːtənt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "income": {
+      "word": "income",
+      "phonetic": "/ˈɪnˌkʌm/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "independent": {
+      "word": "independent",
+      "phonetic": "/ɪndɪˈpɛndənt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "interest": {
+      "word": "interest",
+      "phonetic": "/ˈɪntəɹɪst/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "introduce": {
+      "word": "introduce",
+      "phonetic": "/ˌɪntɹəˈdjuːs/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "invest": {
+      "word": "invest",
+      "phonetic": "/ɪnˈvɛst/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/invest-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=88517632",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "item": {
+      "word": "item",
+      "phonetic": "[ˈaɪ̯ɾm̩]",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "journey": {
+      "word": "journey",
+      "phonetic": "/ˈd͡ʒɜːni/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/journey-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014194",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "keep": {
+      "word": "keep",
+      "phonetic": "/kiːp/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "kind": {
+      "word": "kind",
+      "phonetic": "/kaɪnd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "knowledge": {
+      "word": "knowledge",
+      "phonetic": "/ˈnɒlɪdʒ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "language": {
+      "word": "language",
+      "phonetic": "[ˈleɪŋɡwɪd͡ʒ]",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "late": {
+      "word": "late",
+      "phonetic": "/leɪt/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/late-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9023187",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "lead": {
+      "word": "lead",
+      "phonetic": "/liːd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "learn": {
+      "word": "learn",
+      "phonetic": "/lɜːn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "leave": {
+      "word": "leave",
+      "phonetic": "/liːv/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "lend": {
+      "word": "lend",
+      "phonetic": "/lɛnd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "feature": {
+      "word": "feature",
+      "phonetic": "/ˈfiːtʃə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "improve": {
+      "word": "improve",
+      "phonetic": "/ɪmˈpɹuːv/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "include": {
+      "word": "include",
+      "phonetic": "/ɪnˈkluːd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "influence": {
+      "word": "influence",
+      "phonetic": "/ˈɪn.flu.əns/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "instead": {
+      "word": "instead",
+      "phonetic": "/ɪnˈstɛd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "invite": {
+      "word": "invite",
+      "phonetic": "/ɪnˈvaɪt/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/invite-1-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=88943342",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "involve": {
+      "word": "involve",
+      "phonetic": "/ɪnˈvɒlv/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/involve-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=83326634",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "manage": {
+      "word": "manage",
+      "phonetic": "/ˈmænɪdʒ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "mention": {
+      "word": "mention",
+      "phonetic": "/ˈmɛnʃən/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "offer": {
+      "word": "offer",
+      "phonetic": "/ˈɑfɚ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "opportunity": {
+      "word": "opportunity",
+      "phonetic": "/ˌɒp.əˈtjuː.nɪ.tɪ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "organize": {
+      "word": "organize",
+      "phonetic": "/ˈɔːɡənaɪz/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "prepare": {
+      "word": "prepare",
+      "phonetic": "/pɹɪˈpɛə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "prevent": {
+      "word": "prevent",
+      "phonetic": "/pɹəˈvɛnt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "provide": {
+      "word": "provide",
+      "phonetic": "/pɹəˈvaɪd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "realize": {
+      "word": "realize",
+      "phonetic": "/ˈɹɪə.laɪz/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "receive": {
+      "word": "receive",
+      "phonetic": "/ɹɪˈsiːv/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "reduce": {
+      "word": "reduce",
+      "phonetic": "/ɹɪˈdjuːs/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "refuse": {
+      "word": "refuse",
+      "phonetic": "/ˈɹɛfjuːs/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/refuse-1-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=88671236",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "remind": {
+      "word": "remind",
+      "phonetic": "/ɹəˈmaɪnd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "replace": {
+      "word": "replace",
+      "phonetic": "/ɹɪˈpleɪs/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "require": {
+      "word": "require",
+      "phonetic": "/ɹɪˈkwaɪə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "responsible": {
+      "word": "responsible",
+      "phonetic": "/ɹɪˈspɒnsəbl̩/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "result": {
+      "word": "result",
+      "phonetic": "/ɹɪˈzʌlt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "save": {
+      "word": "save",
+      "phonetic": "/seɪv/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "schedule": {
+      "word": "schedule",
+      "phonetic": "/ˈskɛ.dʒu.əl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "serious": {
+      "word": "serious",
+      "phonetic": "/ˈsɪə.ɹi.əs/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/serious-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=91894774",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "share": {
+      "word": "share",
+      "phonetic": "/ʃɛə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "spend": {
+      "word": "spend",
+      "phonetic": "/spɛnd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "suggest": {
+      "word": "suggest",
+      "phonetic": "/səˈdʒɛst/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "support": {
+      "word": "support",
+      "phonetic": "/səˈpɔːt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "surprise": {
+      "word": "surprise",
+      "phonetic": "/səˈpɹaɪz/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "survive": {
+      "word": "survive",
+      "phonetic": "/səˈvʌɪv/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "attitude": {
+      "word": "attitude",
+      "phonetic": "/ˈætɪˌtjuːd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "available": {
+      "word": "available",
+      "phonetic": "/əˈveɪləb(ə)l/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "benefit": {
+      "word": "benefit",
+      "phonetic": "/ˈbɛn.ɪ.fɪt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "breathe": {
+      "word": "breathe",
+      "phonetic": "/bɹiːð/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "calm": {
+      "word": "calm",
+      "phonetic": "/kam/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "cancel": {
+      "word": "cancel",
+      "phonetic": "/ˈkænsl̩/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "catch": {
+      "word": "catch",
+      "phonetic": "/kæt͡ʃ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "cheap": {
+      "word": "cheap",
+      "phonetic": "/t͡ʃiːp/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/cheap-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014319",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "check": {
+      "word": "check",
+      "phonetic": "/t͡ʃɛk/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "comfortable": {
+      "word": "comfortable",
+      "phonetic": "/ˈkʌm.fə.tə.bəl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "common": {
+      "word": "common",
+      "phonetic": "/ˈkɒmən/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "complete": {
+      "word": "complete",
+      "phonetic": "/kəmˈpliːt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "contain": {
+      "word": "contain",
+      "phonetic": "/kənˈteɪn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "early": {
+      "word": "early",
+      "phonetic": "/ˈɜː.li/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/early-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014378",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "easy": {
+      "word": "easy",
+      "phonetic": "/ˈiːzi/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/easy-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014397",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "education": {
+      "word": "education",
+      "phonetic": "/ˌɛdjʊˈkeɪʃn̩/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/education-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014400",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "effect": {
+      "word": "effect",
+      "phonetic": "/ɪˈfɛkt/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/effect-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=79900132",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "effort": {
+      "word": "effort",
+      "phonetic": "/ˈɛfət/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "empty": {
+      "word": "empty",
+      "phonetic": "/ˈɛmpti/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/empty-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014402",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "enough": {
+      "word": "enough",
+      "phonetic": "/iˈnʌf/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/enough-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014412",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "enter": {
+      "word": "enter",
+      "phonetic": "/ˈɛntə(ɹ)/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/enter-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9028010",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "entire": {
+      "word": "entire",
+      "phonetic": "/ənˈtaɪə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "equipment": {
+      "word": "equipment",
+      "phonetic": "/ɪˈkwɪpmənt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "especially": {
+      "word": "especially",
+      "phonetic": "/əˈspɛʃ(ə)li/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "event": {
+      "word": "event",
+      "phonetic": "/əˈvɛnt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "exactly": {
+      "word": "exactly",
+      "phonetic": "/ɪɡˈzæk(t)li/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "example": {
+      "word": "example",
+      "phonetic": "/əɡˈzæmpl̩/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "excellent": {
+      "word": "excellent",
+      "phonetic": "/ˈɛksələnt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "except": {
+      "word": "except",
+      "phonetic": "/ɪkˈsɛpt/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/except-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=553993",
+      "license": null
+    },
+    "exercise": {
+      "word": "exercise",
+      "phonetic": "/ˈɛk.sə.saɪz/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "expensive": {
+      "word": "expensive",
+      "phonetic": "/ɛkˈspɛnsɪv/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/expensive-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014422",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "fact": {
+      "word": "fact",
+      "phonetic": "/fækt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "fairly": {
+      "word": "fairly",
+      "phonetic": "/ˈfɛə(ɹ).li/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "famous": {
+      "word": "famous",
+      "phonetic": "/ˈfeɪməs/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "fast": {
+      "word": "fast",
+      "phonetic": "/fæst/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/fast-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9014431",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "favorite": {
+      "word": "favorite",
+      "phonetic": "/ˈfeɪv.ɹɪt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "fill": {
+      "word": "fill",
+      "phonetic": "/fɪl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "finally": {
+      "word": "finally",
+      "phonetic": "/ˈfaɪ.nəl.i/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/finally-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=91894813",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "fit": {
+      "word": "fit",
+      "phonetic": "/fɪt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "fix": {
+      "word": "fix",
+      "phonetic": "/ˈfɪks/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "focus": {
+      "word": "focus",
+      "phonetic": "/ˈfəʊ.kəs/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "follow": {
+      "word": "follow",
+      "phonetic": "/ˈfɒləʊ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "forget": {
+      "word": "forget",
+      "phonetic": "/fəˈɡɛt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "free": {
+      "word": "free",
+      "phonetic": "/fɹiː/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/free-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9021859",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "fresh": {
+      "word": "fresh",
+      "phonetic": "/fɹɛʃ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "friendly": {
+      "word": "friendly",
+      "phonetic": "/ˈfɹɛndli/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "future": {
+      "word": "future",
+      "phonetic": "/ˈfjuːt͡ʃə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "gain": {
+      "word": "gain",
+      "phonetic": "/ɡeɪn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "general": {
+      "word": "general",
+      "phonetic": "/ˈd͡ʒɛnɹəl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "goal": {
+      "word": "goal",
+      "phonetic": "/ɡɒʊl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "grow": {
+      "word": "grow",
+      "phonetic": "/ɡɹəʊ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "habit": {
+      "word": "habit",
+      "phonetic": "/ˈhæbət/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "happen": {
+      "word": "happen",
+      "phonetic": "/ˈhæpən/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "health": {
+      "word": "health",
+      "phonetic": "/hɛlθ/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/health-1-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9021979",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "heavy": {
+      "word": "heavy",
+      "phonetic": "/ˈhiːvi/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/heavy-2-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=88943406",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "helpful": {
+      "word": "helpful",
+      "phonetic": "/ˈhɛlp.fəl/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "hide": {
+      "word": "hide",
+      "phonetic": "/haɪd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "hire": {
+      "word": "hire",
+      "phonetic": "/haɪə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "honest": {
+      "word": "honest",
+      "phonetic": "/ˈɒnɪst/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "however": {
+      "word": "however",
+      "phonetic": "/hɑʊˈɛvə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "huge": {
+      "word": "huge",
+      "phonetic": "[hʊudʒ]",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "hurry": {
+      "word": "hurry",
+      "phonetic": "/ˈhʌ.ɹi/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/hurry-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=1971136",
+      "license": null
+    },
+    "level": {
+      "word": "level",
+      "phonetic": "/ˈlɛv.əl/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/level-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=88518399",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "likely": {
+      "word": "likely",
+      "phonetic": "/ˈlaɪkli/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "limit": {
+      "word": "limit",
+      "phonetic": "/ˈlɪmt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "local": {
+      "word": "local",
+      "phonetic": "/ˈləʊkl̩/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "lose": {
+      "word": "lose",
+      "phonetic": "/luːz/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/lose-1-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9028075",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "luck": {
+      "word": "luck",
+      "phonetic": "/lʌk/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/luck-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=91894802",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "maintain": {
+      "word": "maintain",
+      "phonetic": "/meɪnˈteɪn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "major": {
+      "word": "major",
+      "phonetic": "/ˈmeɪ.dʒə(ɹ)/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "matter": {
+      "word": "matter",
+      "phonetic": "/ˈmætə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "measure": {
+      "word": "measure",
+      "phonetic": "/ˈmɛʒə/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/measure-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=80066464",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "meet": {
+      "word": "meet",
+      "phonetic": "/miːt/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/meet-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9028079",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "mind": {
+      "word": "mind",
+      "phonetic": "/maɪnd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "miss": {
+      "word": "miss",
+      "phonetic": "/mɪs/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "modern": {
+      "word": "modern",
+      "phonetic": "/ˈmɒd(ə)n/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "necessary": {
+      "word": "necessary",
+      "phonetic": "/ˈnɛsəsɹɪ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "notice": {
+      "word": "notice",
+      "phonetic": "/ˈnəʊtɪs/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "order": {
+      "word": "order",
+      "phonetic": "/ˈɔːdə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "ordinary": {
+      "word": "ordinary",
+      "phonetic": "/ˈɔːdənɹi/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "own": {
+      "word": "own",
+      "phonetic": "/ˈəʊn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "pain": {
+      "word": "pain",
+      "phonetic": "/peɪn/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/pain-1-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=88517653",
+      "license": {
+        "name": "BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
+    },
+    "particular": {
+      "word": "particular",
+      "phonetic": "/pəˈtɪkjəlɚ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "patient": {
+      "word": "patient",
+      "phonetic": "/ˈpeɪʃənt/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/patient-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9023296",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    },
+    "pay": {
+      "word": "pay",
+      "phonetic": "/peɪ/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "perfect": {
+      "word": "perfect",
+      "phonetic": "/ˈpɜː.fɛkt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "plan": {
+      "word": "plan",
+      "phonetic": "/plæn/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "pleasant": {
+      "word": "pleasant",
+      "phonetic": "/ˈplɛzənt/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "popular": {
+      "word": "popular",
+      "phonetic": "/ˈpɒpjʊlə/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "practice": {
+      "word": "practice",
+      "phonetic": "/ˈpɹæktɪs/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "prefer": {
+      "word": "prefer",
+      "phonetic": "/pɹɪˈfɜː/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "pressure": {
+      "word": "pressure",
+      "phonetic": "[ˈpɹɛʃ.ə(ɹ)]",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "pretend": {
+      "word": "pretend",
+      "phonetic": "/pɹɪˈtɛnd/",
+      "audio": "",
+      "accent": "unspecified",
+      "source": "https://dictionaryapi.dev/",
+      "license": null
+    },
+    "price": {
+      "word": "price",
+      "phonetic": "/pɹaɪs/",
+      "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/price-uk.mp3",
+      "accent": "en-GB",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=9023318",
+      "license": {
+        "name": "BY 3.0 US",
+        "url": "https://creativecommons.org/licenses/by/3.0/us"
+      }
+    }
+  }
+}

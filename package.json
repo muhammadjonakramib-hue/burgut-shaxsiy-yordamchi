@@ -1,1 +1,1 @@
-{"name":"burgut-netlify","private":true,"type":"module","scripts":{"build":"node scripts/check.mjs","test":"node --test tests/*.test.mjs"},"engines":{"node":">=22"}}
+{"name":"burgut-netlify","private":true,"type":"module","scripts":{"build":"node scripts/check.mjs","test":"node --test tests/*.test.mjs"},"engines":{"node":">=22"},"dependencies":{"web-push":"3.6.7"},"devDependencies":{"@electric-sql/pglite":"0.3.14"}}

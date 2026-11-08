@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "wordQuizItems": "01f294a97ecdbf7afa53f217f81a03306a8457661fcd32345cd2a31e046bb364",
+    "nextQuiz": "33c04951957c67cedda576a9551d70926b905e47a981357260db0ee6548b85ac",
+    "nextReviewLabel": "302e2b9824a133da24181219bb39a9ad8932d740f05f78e277b4a7670bf993ec",
+    "chooseQuizOption": "c0faaf537fd09f916aa5b1f907847abb582e48366fc38b2c8b292814f109ac06",
+    "quizOptions": "dc7c7198fb90216b002cd29153fdefdbe68e59c17433195fd9cbd86d69416e40",
+    "shuffleOptions": "4edd27bb695d483bb0a3bbf63788fee7cbf56cc43a312620d30c02e918a40711",
+    "syncStudy": "617103a4c7fba4a1bb4245332a3c9a0f849cb98f4f0a8dbec245a2f70d66739a",
+    "mergeCloudSnapshot": "35309122f4b61a57809e6a75655f5cfe121e3d5dcab210ca0dcf009f6b854850",
+    "wordKey": "9d43bdb0daa584e04b04099544c6e065e6ace8215ac704cb78f332153836f1af",
+    "normalizeVocab": "e5dd9e5cfc7c93b6f69b9dbd2956967298ded7452b65b6b0b096224b58b20b5e",
+    "isLearned": "a543ddec876297345f4107c899da4c5319f7088938d9638db47cf00deb7b8023"
+  },
+  "sql": {
+    "001_learning.sql": "b76937e08099fba8843a0d56d6d74ee331d495a8f880908030bd0b23912f1e50",
+    "002_device_sync.sql": "874982d85bb4440f46de4653fdac235a6295ed3f90dc1df435665b38332d8419"
+  }
+}

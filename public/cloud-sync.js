@@ -66,7 +66,11 @@
   async function ready() {
     try {
       await config();
-      if(state.configured){state.userId=await rpc('burgut_owner');state.connected=true;state.error=null;}
+      if(state.configured){
+        state.userId=read(SESSION+'.owner',state.userId);
+        if(navigator.onLine===false)throw Error('Oflayn: natijalar qurilmada saqlanadi');
+        state.userId=await rpc('burgut_owner');write(SESSION+'.owner',state.userId);state.connected=true;state.error=null;
+      }
     }catch(e){state.connected=false;state.error=e.message;}
     state.pending=read(QUEUE,[]).length;return {...state};
   }
@@ -198,10 +202,18 @@
     return {learned};
   }
   async function claimPair(code) {
-    if(read('burgut.plans',[]).length || read('burgut.expenses',[]).length)throw Error('Ulashni rejalari yo‘q yangi qurilmada bajaring');
+    await flush();
     if(read(QUEUE,[]).length || read('burgut.reviewQueue',[]).length)throw Error('Bu qurilmadagi javoblarni avval sinxronlang');
     if(!/^[a-f0-9-]{36}$/i.test(code.trim()))throw Error('Ulash kodi noto‘g‘ri');
-    state.userId=await rpc('burgut_pair_claim',{pair_code:code.trim()});return pull();
+    state.userId=await rpc('burgut_pair_claim',{pair_code:code.trim()});write(SESSION+'.owner',state.userId);return pull();
   }
-  window.BurgutCloud={saveRecord,records,expensesApi,vocabApi,ready,configure,pull,pushReview,pushBudget,createPair,claimPair,plansApi,pending:()=>read(QUEUE,[]),status:()=>({...state})};
+  async function dailyRead() {
+    const page=async(table)=>{const all=[];for(let offset=0;;offset+=500){const part=await request('/rest/v1/'+table+'?select=*&order='+({burgut_daily_templates:'id.asc',burgut_daily_occurrences:'template_id.asc,date.asc',burgut_daily_preferences:'user_id.asc'}[table])+'&limit=500&offset='+offset);all.push(...part);if(part.length<500)return all;}};
+    const [templates,occurrences,preferences]=await Promise.all([page('burgut_daily_templates'),page('burgut_daily_occurrences'),page('burgut_daily_preferences')]);
+    return {templates,occurrences,preferences:preferences[0]||{timezone:'Asia/Tashkent',theme:'auto'}};
+  }
+  const dailyRpc=(name,body)=>{if(!['burgut_daily_save','burgut_daily_occurrence','burgut_daily_stop','burgut_daily_settings','burgut_daily_subscribe','burgut_daily_unsubscribe'].includes(name))throw Error('RPC noto‘g‘ri');return rpc(name,body);};
+  const wordBatch=(day,keys,course)=>rpc('burgut_word_batch',{day,keys,course});
+  const wordCourse=async()=>{const latest=await request('/rest/v1/burgut_word_batches?select=level&order=date.desc&limit=1');return latest[0]?.level||'B1';};
+  window.BurgutCloud={wordCourse,wordBatch,dailyRead,dailyRpc,saveRecord,records,expensesApi,vocabApi,ready,configure,pull,pushReview,pushBudget,createPair,claimPair,plansApi,pending:()=>read(QUEUE,[]),status:()=>({...state})};
 })();

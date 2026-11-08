@@ -1,3 +1,4 @@
+import {selectPronunciation} from '../public/pronunciation-core.mjs';
 const cache = new Map();
 
 function validWord(value) {
@@ -19,14 +20,11 @@ export async function getPronunciation(word) {
     });
     if (!response.ok) return null;
     const entries = await response.json();
-    const phonetics = (Array.isArray(entries) ? entries : [])
-      .flatMap((entry) => Array.isArray(entry.phonetics) ? entry.phonetics : []);
-    const result = {
-      word: value,
-      phonetic: entries?.[0]?.phonetic || phonetics.find((item) => item.text)?.text || "",
-      audio: phonetics.find((item) => item.audio)?.audio || "",
-    };
-    cache.set(value, result);
+    const result = selectPronunciation(entries, value);
+    if(result.audio || result.phonetic){
+      if(cache.size>=1000)cache.delete(cache.keys().next().value);
+      cache.set(value, result);
+    }
     return result;
   } catch {
     return null;

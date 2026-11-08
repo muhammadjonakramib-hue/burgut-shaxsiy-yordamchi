@@ -250,11 +250,8 @@ function pickDaily(bank, count, day, salt) {
 }
 
 function dailyWords() {
-  const day = dayNumber();
-  return {
-    tr: pickDaily(BANK.tr, 5, day, 3),
-    en: pickDaily(BANK.en, 10, day, 17),
-  };
+  const day=dayNumber();
+  return {tr:window.BurgutLevels?window.BurgutLevels.daily(BANK.tr,state.personal?.cards||{},state.vocab,todayKey()):pickDaily(BANK.tr,5,day,3),en:pickDaily(BANK.en,10,day,17)};
 }
 
 function wordKey(lang, word) {
@@ -322,7 +319,7 @@ function applyPersonal(data) {
 function cloudStatusMarkup() {
   const cloud = state.cloud || {};
   const label = cloud.error ? esc(cloud.error) : cloud.connected ? 'Bulut bilan aloqa bor' : 'Bulutni sozlash kerak';
-  return '<div class="card"><h3>Qurilmalarim</h3><p role="status">'+label+'</p><p class="hint">Yuborilishi kutilmoqda: '+(cloud.pending||0)+'</p><div class="row-actions"><button class="btn ghost" data-cloud-action="setup">Bulut sozlamasi</button><button class="btn ghost" data-cloud-action="create">Telefonni ulash kodi</button><button class="btn ghost" data-cloud-action="claim">Kodni kiritish</button><button class="btn ghost" data-cloud-action="sync">Sinxronlash</button></div><p class="hint">Asosiy qurilmada kod yarating, yangi qurilmada kiriting. Kod 10 daqiqada tugaydi va bir marta ishlaydi.</p></div>';
+  return '<div class="card"><h3>Qurilmalarim</h3><p role="status">'+label+'</p><p class="hint">Hisob: '+esc(cloud.userId?.slice(0,8)||'ulanmagan')+' · Ikkala qurilmada bir xil bo‘lishi kerak.</p><p class="hint">Yuborilishi kutilmoqda: '+(cloud.pending||0)+'</p><div class="row-actions"><button class="btn ghost" data-cloud-action="setup">Bulut sozlamasi</button><button class="btn ghost" data-cloud-action="create">Telefonni ulash kodi</button><button class="btn ghost" data-cloud-action="claim">Kodni kiritish</button><button class="btn ghost" data-cloud-action="sync">Sinxronlash</button></div><p class="hint">Asosiy qurilmada kod yarating, yangi qurilmada kiriting. Kod 10 daqiqada tugaydi va bir marta ishlaydi.</p></div>';
 }
 
 function mergeCloudSnapshot(snapshot) {
@@ -393,6 +390,10 @@ async function syncCloud() {
     }catch(error){state.errors.expenses=error.message;state.cloud.error=error.message;}
   }
   state.cloud = {...window.BurgutCloud.status(),error:state.cloud.error || window.BurgutCloud.status().error};
+  if(state.cloud.connected && window.BurgutLevels){
+    try{await BurgutLevels.sync(BANK.tr,state.personal?.cards||{},state.vocab,todayKey());}
+    catch(error){state.errors.vocab='Yangi turkcha so‘zlar: '+error.message;}
+  }
 }
 
 let studySync = null;
@@ -476,27 +477,9 @@ function progressBar(done, total) {
 }
 
 const pronunciationRequests = new Map();
-function pronunciationFor(word) {
-  return state.pronunciation?.[String(word).toLowerCase()] || {};
-}
+function pronunciationFor(word) {return window.BurgutAudio?.peek(word)||{};}
 
-async function loadPronunciation(word) {
-  const key = String(word).trim().toLowerCase();
-  if (!key || pronunciationRequests.has(key)) return pronunciationRequests.get(key);
-  const task = fetch(`/api/pronunciation?word=${encodeURIComponent(key)}`, { cache: "no-store" })
-    .then((res) => res.ok ? res.json() : null)
-    .then((data) => {
-      if (data && (data.audio || data.phonetic)) {
-        state.pronunciation[key] = { phonetic: data.phonetic || "", audio: data.audio || "" };
-        writeCache("burgut.pronunciation", state.pronunciation);
-        if (state.tab === "words") renderCurrent();
-      }
-      return state.pronunciation[key] || null;
-    })
-    .catch(() => null);
-  pronunciationRequests.set(key, task);
-  return task;
-}
+async function loadPronunciation(word) {return window.BurgutAudio?.lookup(word)||null;}
 
 function pronunciationMarkup(item) {
   if (item.lang !== "en") return "";
@@ -515,7 +498,7 @@ function wordRow(lang, item) {
         ${item.lvl ? `<i class="word-lvl">${esc(item.lvl)}</i>` : ""}
       </div>
       ${pronunciationMarkup({ ...item, lang })}
-      <p class="word-ex">${esc(item.ex)}</p>
+      <p class="word-ex">${esc(item.ex)}</p>${item.exUz?`<p class="word-ex-translation">${esc(item.exUz)}</p>`:""}
     </div>
     ${lang === 'en' ? `<button class="word-spk" data-speak="${esc(item.w)}" data-lang="en" aria-label="Inglizcha talaffuz">🔊</button>` : ''}
   </li>`;
@@ -577,10 +560,10 @@ function renderWordQuiz(items) {
   return `<div class="card quiz-card">
     <div class="quiz-top"><span class="lang-tag ${item.lang}">${item.lang === "tr" ? "TR" : "EN"}</span><span class="counter">${progress}</span></div>
     <p class="muted small">${card ? "Takrorlash vaqti keldi" : "Bugungi yangi so‘z"} · ${direction === "w2t" ? "so‘z → tarjima" : "tarjima → so‘z"}</p>
-    <div class="quiz-prompt"><span>${direction === "w2t" ? "So‘z" : "Tarjima"}</span><b>${esc(prompt)}</b>${pronunciation.phonetic ? `<small>${esc(pronunciation.phonetic)}</small>` : ""}</div>
+    <div class="quiz-prompt"><span>${direction === "w2t" ? "So‘z" : "Tarjima"}</span><b>${esc(prompt)}</b>${item.lang==='en' && (direction==='w2t'||state.wordQuizRevealed) ? pronunciationMarkup(item) : ""}</div>
     <div class="quiz-tools">${item.lang === 'en' && (direction === 'w2t' || feedback) ? `<button data-speak="${esc(item.w)}" data-lang="en" aria-label="Talaffuzni eshitish">🔊 Eshitish</button>` : ''}<button class="quiz-reveal" data-word-reveal type="button">Javobni ko‘rsatish</button></div>
     <div class="quiz-options">${optionHtml}</div>
-    ${state.wordQuizRevealed && !feedback ? `<div class="quiz-example"><b>${esc(correct)}</b><br>${esc(item.ex)}</div><div class="quiz-actions">${[['wrong','bad','Bilmayman'],['hard','hard','Qiyin'],['correct','good','Bilaman']].map(([rating,cls,label])=>`<button class="quiz-answer ${cls}" data-word-answer="${rating}" ${state.studyBusy?'disabled':''}>${label}<small>${nextReviewLabel(key,rating)}</small></button>`).join('')}</div>` : feedbackHtml}
+    ${state.wordQuizRevealed && !feedback ? `<div class="quiz-example"><b>${esc(correct)}</b><br>${esc(item.ex)}${item.exUz?`<br><small>${esc(item.exUz)}</small>`:""}</div><div class="quiz-actions">${[['wrong','bad','Bilmayman'],['hard','hard','Qiyin'],['correct','good','Bilaman']].map(([rating,cls,label])=>`<button class="quiz-answer ${cls}" data-word-answer="${rating}" ${state.studyBusy?'disabled':''}>${label}<small>${nextReviewLabel(key,rating)}</small></button>`).join('')}</div>` : feedbackHtml}
   </div>`;
 }
 
@@ -642,6 +625,8 @@ function renderWords() {
     </div>
   </div>`;
 
+  html += `<div class="card"><p class="hint" data-offline-status>Oflayn nusxa tekshirilmoqda…</p><button class="btn ghost" data-offline-prepare>Oflayn tayyorlash</button></div>`;
+
   if (state.errors.vocab) {
     html += `<div class="card warn-card">⚠️ Belgilar serverga saqlanmadi (${esc(state.errors.vocab)}). Hozircha shu qurilmada ko'rinadi.</div>`;
   }
@@ -649,7 +634,7 @@ function renderWords() {
   html += `<div class="word-dashboard"><div><b>${stats.attempts || 0}</b><span>test urinish</span></div><div><b>${accuracy}%</b><span>to'g'ri javob</span></div><div><b>${stats.streak || 0}</b><span>kunlik streak</span></div></div>
     <div class="word-toolbar"><div class="mode-switch"><button class="${state.wordMode === "list" ? "active" : ""}" data-word-mode="list">Ro'yxat</button><button class="${state.wordMode === "quiz" ? "active" : ""}" data-word-mode="quiz">Test</button></div><input class="word-search" data-word-search value="${esc(state.wordQuery)}" placeholder="So'z qidirish..." aria-label="So'z qidirish"><div class="word-filters"><button class="${state.wordLang === "all" ? "active" : ""}" data-word-lang="all">Barchasi</button><button class="${state.wordLang === "tr" ? "active" : ""}" data-word-lang="tr">TR</button><button class="${state.wordLang === "en" ? "active" : ""}" data-word-lang="en">EN</button></div></div>`;
 
-  if (!sets.tr.length || !sets.en.length) {
+  if (!BANK.tr.length || !BANK.en.length) {
     html += `<div class="card empty">
       <div class="em">📚</div>
       <h3>So'zlar banki yuklanmadi</h3>
@@ -664,14 +649,17 @@ function renderWords() {
   } else {
     const trItems = state.wordLang === "en" ? [] : sets.tr.filter((item) => !state.wordQuery || `${item.w} ${item.t} ${item.ex}`.toLocaleLowerCase().includes(state.wordQuery.toLocaleLowerCase()));
     const enItems = state.wordLang === "tr" ? [] : sets.en.filter((item) => !state.wordQuery || `${item.w} ${item.t} ${item.ex}`.toLocaleLowerCase().includes(state.wordQuery.toLocaleLowerCase()));
-    html += wordSection("tr", "Turkcha", "B2 daraja · 5 ta so'z", trItems);
+    html += wordSection("tr", "Turkcha", (window.BurgutLevels?.label(BANK.tr,state.vocab)||'Daraja tekshirilmoqda'), trItems);
     html += wordSection("en", "Inglizcha", "A2–B1 daraja · 10 ta so'z", enItems);
   }
+  if(state.wordLang!=='en'&&!sets.tr.length)html+='<div class="card">Bugungi yangi turkcha so‘zlar tugadi yoki daraja so‘zlari o‘rganilmoqda. Takrorlash navbati Test bo‘limida saqlanadi.</div>';
   const dueCount=Object.values(state.personal?.cards || {}).filter(c=>Date.parse(c.dueAt)<=Date.now()).length;
-  html += `<div class="card study-status"><h3>${dueCount} ta so‘zning takrorlash vaqti keldi</h3><p class="hint">Bilmayman → 1 daqiqa. Qiyin → 1 kun. Bilaman → 1, 3, 8, 20… kun. Oldingi kunlardagi so‘zlar ham navbatga qaytadi.</p><button class="btn ghost" data-word-mode="quiz">Takrorlashni boshlash</button><p class="hint" role="status">${pendingReviews().length ? `${pendingReviews().length} ta javob shu qurilmada saqlangan, serverga yuborilishi kutilmoqda.` : 'Javoblar lokal serverda saqlanadi.'}</p>${state.personalError?`<p class="hint">${esc(state.personalError)}</p>`:''}<button class="btn ghost small" data-study-sync>Sinxronlash</button></div>`;
+  html += `<div class="card study-status"><h3>${dueCount} ta so‘zning takrorlash vaqti keldi</h3><p class="hint">Bilmayman → 1 daqiqa. Qiyin → 1 kun. Bilaman → 1, 3, 7, 15, 30, 60, 90, 180, 365 kun. Oldingi kunlardagi so‘zlar ham navbatga qaytadi.</p><button class="btn ghost" data-word-mode="quiz">Takrorlashni boshlash</button><p class="hint" role="status">${pendingReviews().length ? `${pendingReviews().length} ta javob shu qurilmada saqlangan, serverga yuborilishi kutilmoqda.` : 'Javoblar Supabase bilan sinxronlanadi.'}</p>${state.personalError?`<p class="hint">${esc(state.personalError)}</p>`:''}<button class="btn ghost small" data-study-sync>Sinxronlash</button></div>`;
   html += `<p class="footer-note">✓ belgisi kun almashganda ham saqlanadi. Takrorlash jadvali Testdagi javobingizga ko‘ra o‘zgaradi.</p>`;
   html += cloudStatusMarkup();
+  html += '<button class="btn ghost small" data-words-theme>Yorug‘ / qorong‘i ko‘rinish</button>';
   $("#view-words").innerHTML = html;
+  $('#view-words').dataset.theme=readCache('burgut.words.theme',matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
 }
 
 async function nextQuiz(result) {
@@ -756,42 +744,9 @@ async function markAllWords(lang, learned) {
 let activeWordAudio = null;
 let speechRequest = 0;
 async function speakWord(text, lang) {
-  if (lang !== 'en') return;
-  const request = ++speechRequest;
-  activeWordAudio?.pause();
-  window.speechSynthesis?.cancel();
-  if (lang === "en") {
-    const cached = pronunciationFor(text);
-    const pronunciation = cached.audio ? cached : await loadPronunciation(text);
-    if (request !== speechRequest) return;
-    if (pronunciation?.audio) {
-      try {
-        const audio = new Audio(pronunciation.audio);
-        activeWordAudio = audio;
-        audio.volume = 1;
-        audio.preload = "auto";
-        await audio.play();
-        return;
-      } catch { /* audio ruxsati bo'lmasa pastdagi fallback ishlaydi */ }
-    }
-  }
-  if (!("speechSynthesis" in window)) {
-    toast("Bu qurilmada ovoz qo'llab-quvvatlanmaydi");
-    return;
-  }
-  const voices = window.speechSynthesis.getVoices().filter(v => /^en[-_]/i.test(v.lang));
-  if (!voices.length) {
-    toast('Inglizcha audio yuklanmadi. Internetni tekshirib qayta bosing.', 5000);
-    pronunciationRequests.delete(String(text).trim().toLowerCase());
-    return;
-  }
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.voice = voices.find(v => /en-US/i.test(v.lang)) || voices[0];
-  utter.volume = 1;
-  utter.lang = lang === "tr" ? "tr-TR" : "en-US";
-  utter.rate = lang === "tr" ? 0.84 : 0.8;
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utter);
+  if(lang!=='en')return;
+  if(!window.BurgutAudio){toast('Ovoz moduli yuklanmoqda. Qayta bosing.');return;}
+  return window.BurgutAudio.speak(text,lang);
 }
 
 // ——————————————— Xarjatlar ———————————————
@@ -971,6 +926,7 @@ function renderExpenses() {
     html += `<div class="card warn-card">⚠️ Xarjatlar serverdan yuklanmadi (${esc(state.errors.expenses)}). Oxirgi nusxa ko'rsatilgan.</div>`;
   }
 
+  html += cloudStatusMarkup();
   html += '<p class="card hint">Xarajatlar va budjet Supabase bilan sinxronlanadi. Internet uzilganda yozuvlar qurilmada navbatda saqlanadi.</p>';
   html += budgetPanel();
 
@@ -1054,10 +1010,11 @@ async function addExpense(form) {
     $("#exp-amount", form).value = "";
     $("#exp-note", form).value = "";
     $("#exp-date", form).value = todayKey();
-    toast("Xarjat qo'shildi ✅");
+    state.cloud=BurgutCloud.status();
+    toast(state.cloud.pending?'Xarajat qurilmada saqlandi; bulutga yuborish kutilmoqda':'Xarajat Supabase’da saqlandi');
     renderExpenses();
     if (state.tab === "today") renderToday();
-    $("#exp-amount", form).focus();
+    $("#exp-amount")?.focus();
   } catch (err) {
     toast(`Saqlanmadi: ${err.message}`);
   } finally {
@@ -1660,11 +1617,9 @@ function settingsView() {
   const okCount = sources.filter((s) => s.ok).length;
   const farm = state.config?.farm || {};
 
-  let html = `<div class="card"><h3>So‘zlar va budjet zaxirasi</h3><p class="hint">Takrorlash tarixi va oylik budjetlarni JSON faylga saqlang. Tiklash mavjud yozuvlarga yetishmaganlarini qo‘shadi. Rejalar va xarajat yozuvlari bu zaxiraga kirmaydi.</p><div class="news-actions"><button class="btn" data-study-backup>Yuklab olish</button><label class="btn ghost">Fayldan tiklash<input type="file" accept=".json,application/json" data-study-import hidden></label></div><p class="hint">Hozir ma’lumotlar shu kompyuterdagi serverda. Supabase ulanishi hali yo‘q.</p></div><div class="card">
+  let html = `<div class="card"><h3>So‘zlar va budjet zaxirasi</h3><p class="hint">Takrorlash tarixi, oylik budjetlar, xarajatlar va avvalgi rejalarni JSON faylga saqlang. Kunlik reja taqvimi bu zaxiraga kirmaydi. Bu tugma lug‘atni oflayn yuklash uchun emas.</p><div class="news-actions"><button class="btn" data-study-backup>Yuklab olish</button><label class="btn ghost">Fayldan tiklash<input type="file" accept=".json,application/json" data-study-import hidden></label></div><p class="hint">${state.cloud?.connected ? "Supabase ulangan. Saqlangan ma’lumotlar bulut bilan sinxronlanadi." : "Hozir bulut bilan aloqa yo‘q. Yuborilmagan natijalar shu qurilmada saqlanadi."}</p></div><div class="card">
     <div class="news-block" style="margin-top:0">
-      <h4>Ferma profili</h4>
-      <p class="hint"><b>${esc(farm.name || "Aobod fermasi")}</b> · ${esc(String(farm.cows || 30))} bosh · ${esc(farm.region || "Qashqadaryo")}</p>
-      <p class="hint">O'zgartirish: loyiha papkasidagi <code>config.json</code> → <code>farm</code>.</p>
+      <h4>Shaxsiy yordamchi</h4><p class="hint">O‘qish, so‘z yodlash, xarajatlar va kunlik rejalar.</p><p class="hint" data-offline-status>Oflayn nusxa tekshirilmoqda…</p><button class="btn ghost" data-offline-prepare>Oflayn tayyorlash</button>
     </div>
   </div>`;
 
@@ -1685,13 +1640,10 @@ function settingsView() {
     <div class="news-block" style="margin-top:0">
       <h4>Telegramga ulash</h4>
       <p class="hint">
-        1. Telegramda <b>@BotFather</b> orqali bot yarating va token oling.<br>
-        2. Botga <b>/start</b> yozing, so'ng chat ID ni oling.<br>
-        3. Loyiha papkasidagi <code>config.json</code> faylida <code>telegram.botToken</code> va <code>telegram.chatId</code> ni to'ldiring.<br>
-        4. Serverni qayta ishga tushiring — sharhni qo'lda ham yuborish mumkin.
+        Telegram bot uchun internet zarur. Internetsiz yodlash uchun ilovaning oflayn nusxasidan foydalaning.<br>Botingiz: <b>@buuuurgutbot</b>. Botda <b>/start</b> yuboring. Javob kelmasa, serverdagi ulash bosqichi hali tugallanmagan. Bot lug‘atni ko‘rsatadi; test va takrorlash ilovada yuritiladi.
       </p>
       <div class="news-actions">
-        <button class="btn ghost" data-news-act="telegram">✈️ Hozir sinab ko'rish</button>
+        <a class="btn ghost" href="https://t.me/buuuurgutbot" target="_blank" rel="noopener noreferrer">Burgut botni ochish</a>
       </div>
     </div>
   </div>`;
@@ -1946,6 +1898,7 @@ function renderCurrent() {
   else if (state.tab === "expenses") renderExpenses();
   else if (state.tab === "plans") renderPlans();
   else if (state.tab === "news") renderNews();
+  else if (state.tab === "daily") window.DailyPlanner?.open();
   updateBadges();
 }
 
@@ -1981,7 +1934,7 @@ function applyFarm() {
 }
 
 function switchTab(tab) {
-  if (!["today", "words", "expenses", "plans", "news"].includes(tab)) return;
+  if (!["today", "words", "expenses", "plans", "daily", "news"].includes(tab)) return;
   state.tab = tab;
   $$(".tab").forEach((el) => el.classList.toggle("on", el.dataset.tab === tab));
   $$(".view").forEach((el) => el.classList.toggle("on", el.id === `view-${tab}`));
@@ -2292,7 +2245,7 @@ $("#btn-refresh").addEventListener("click", async () => {
     hash = "news";
     history.replaceState(null, "", "#news");
   }
-  if (["today", "words", "expenses", "plans", "news"].includes(hash)) {
+  if (["today", "words", "expenses", "plans", "daily", "news"].includes(hash)) {
     state.tab = hash;
     $$(".tab").forEach((el) => el.classList.toggle("on", el.dataset.tab === hash));
     $$(".view").forEach((el) => el.classList.toggle("on", el.id === `view-${hash}`));
@@ -2313,14 +2266,14 @@ $("#btn-refresh").addEventListener("click", async () => {
       }
       return;
     }
-    if (["today", "words", "expenses", "plans", "news"].includes(raw) && raw !== state.tab) switchTab(raw);
+    if (["today", "words", "expenses", "plans", "daily", "news"].includes(raw) && raw !== state.tab) switchTab(raw);
   });
 
   let currentDay = todayKey();
   const refreshPersonalView=()=>{
     if(state.studyBusy)return;
     syncStudy().then(()=>{
-      if(['words','today'].includes(state.tab)&&!document.activeElement?.matches('input,textarea,select'))renderCurrent();
+      if(['words','today','expenses','plans'].includes(state.tab)&&!document.activeElement?.matches('input,textarea,select'))renderCurrent();
     });
   };
   window.addEventListener('online',refreshPersonalView);
@@ -2330,7 +2283,7 @@ $("#btn-refresh").addEventListener("click", async () => {
     if (!document.hidden && state.tab === 'news' && state.newsView !== 'football') loadWeekly(false);
   });
   setInterval(() => {
-    if(!document.hidden && state.tab==='words' && !state.studyBusy)syncStudy().then(()=>renderCurrent());
+    if(!document.hidden && ['words','expenses','plans','today'].includes(state.tab) && !state.studyBusy && !document.activeElement?.matches('input,textarea,select'))syncStudy().then(()=>renderCurrent());
     if (!document.hidden && state.tab === "news" && state.newsView === "football") loadFootball(false);
     if (!document.hidden && state.tab === 'news' && state.newsView !== 'football' && Date.now() - new Date(state.weekly?.generatedAt || 0).getTime() >= 30 * 60 * 1000) loadWeekly(false);
     if (todayKey() !== currentDay) {
@@ -2346,3 +2299,22 @@ $("#btn-refresh").addEventListener("click", async () => {
     if (secure) navigator.serviceWorker.register("./sw.js").catch(() => {});
   }
 })();
+
+ document.addEventListener('click',event=>{if(event.target.closest('[data-words-theme]')){const root=document.getElementById('view-words');const mode=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=mode;writeCache('burgut.words.theme',mode);}});
+
+let expenseRefresh=null;
+async function refreshExpenseCloud(){
+  if(expenseRefresh||document.hidden||state.tab!=='expenses')return;
+  expenseRefresh=(async()=>{
+    try{
+      const result=await BurgutCloud.expensesApi('/api/expenses');
+      const changed=JSON.stringify(result.items)!==JSON.stringify(state.expenses)||state.cloud.pending!==BurgutCloud.status().pending||state.errors.expenses;
+      state.expenses=result.items;writeCache('burgut.expenses',result.items);state.cloud=BurgutCloud.status();state.errors.expenses=null;
+      const draft=$('#exp-amount')?.value||$('#exp-note')?.value;
+      if(changed&&!draft&&!document.activeElement?.matches('input,textarea,select'))renderExpenses();
+    }catch(error){state.errors.expenses=error.message;}
+  })().finally(()=>{expenseRefresh=null;});return expenseRefresh;
+}
+setInterval(refreshExpenseCloud,15000);
+document.addEventListener('visibilitychange',refreshExpenseCloud);
+window.addEventListener('online',refreshExpenseCloud);
