@@ -1,4 +1,4 @@
-const CACHE = "burgut-offline-v4";
+const CACHE = "burgut-offline-v5";
 const SHELL = [
   "./",
   "./index.html",

@@ -490,7 +490,7 @@ function pronunciationMarkup(item) {
 function wordRow(lang, item) {
   const learned = isLearned(lang, item.w);
   return `<li class="word${learned ? " done" : ""}">
-    <button class="word-tick" data-word-toggle data-lang="${lang}" data-word="${esc(item.w)}" aria-label="${learned ? "O'rganilmagan deb belgilash" : "O'rganildi deb belgilash"}">✓</button>
+    <button class="word-tick" aria-pressed="${learned}" data-word-toggle data-lang="${lang}" data-word="${esc(item.w)}" aria-label="${learned ? "O'rganilmagan deb belgilash" : "O'rganildi deb belgilash"}">✓</button>
     <div class="word-body">
       <div class="word-line">
         <b>${esc(item.w)}</b>
@@ -628,7 +628,7 @@ function renderWords() {
   html += `<div class="card"><p class="hint" data-offline-status>Oflayn nusxa tekshirilmoqda…</p><button class="btn ghost" data-offline-prepare>Oflayn tayyorlash</button></div>`;
 
   if (state.errors.vocab) {
-    html += `<div class="card warn-card">⚠️ Belgilar serverga saqlanmadi (${esc(state.errors.vocab)}). Hozircha shu qurilmada ko'rinadi.</div>`;
+    html += `<div class="card warn-card" data-vocab-error>⚠️ Belgilar serverga saqlanmadi (${esc(state.errors.vocab)}). Hozircha shu qurilmada ko'rinadi.</div>`;
   }
 
   html += `<div class="word-dashboard"><div><b>${stats.attempts || 0}</b><span>test urinish</span></div><div><b>${accuracy}%</b><span>to'g'ri javob</span></div><div><b>${stats.streak || 0}</b><span>kunlik streak</span></div></div>
@@ -682,14 +682,63 @@ async function nextQuiz(result) {
   finally {state.studyBusy=false;renderCurrent();}
 }
 
+let wordMarkBusy = false;
+
+// Update existing nodes: keep focus, audio, scroll and card transitions intact.
+function refreshWordMarks() {
+  if (state.tab !== "words") { updateBadges(); return; }
+  const view = $("#view-words");
+  for (const button of view.querySelectorAll('[data-word-toggle]')) {
+    const learned = isLearned(button.dataset.lang, button.dataset.word);
+    button.closest('.word').classList.toggle('done', learned);
+    button.setAttribute('aria-pressed', String(learned));
+    button.setAttribute('aria-label', learned ? "O'rganilmagan deb belgilash" : "O'rganildi deb belgilash");
+    button.setAttribute('aria-disabled', String(wordMarkBusy));
+  }
+  for (const button of view.querySelectorAll('[data-word-all]')) {
+    const card = button.closest('.card');
+    const rows = [...card.querySelectorAll('[data-word-toggle]')];
+    const done = rows.filter(b => isLearned(b.dataset.lang, b.dataset.word)).length;
+    card.querySelector('.counter').textContent = `${done}/${rows.length}`;
+    const progress = card.querySelector('.progress');
+    progress.setAttribute('aria-label', `${done}/${rows.length}`);
+    progress.querySelector('i').style.width = `${rows.length ? Math.round(done / rows.length * 100) : 0}%`;
+    const allDone = rows.length > 0 && done === rows.length;
+    button.dataset.learn = allDone ? '0' : '1';
+    button.textContent = allDone ? 'Belgini tozalash' : 'Hammasini belgilash';
+    button.setAttribute('aria-disabled', String(wordMarkBusy));
+  }
+  const sets = dailyWords();
+  const total = sets.tr.length + sets.en.length;
+  const done = ['tr', 'en'].reduce((n, lang) => n + sets[lang].filter(w => isLearned(lang, w.w)).length, 0);
+  const hero = view.querySelector('.hero-progress');
+  if (hero) {
+    hero.querySelector('i').style.width = `${total ? Math.round(done / total * 100) : 0}%`;
+    hero.querySelector('span').textContent = `${done}/${total} o'rganildi`;
+  }
+  let warning = view.querySelector('[data-vocab-error]');
+  if (state.errors.vocab) {
+    if (!warning) {
+      warning = document.createElement('div');
+      warning.className = 'card warn-card';
+      warning.dataset.vocabError = '';
+      view.querySelector('.hero')?.after(warning);
+    }
+    warning.textContent = `Belgilar saqlanmadi: ${state.errors.vocab}`;
+  } else warning?.remove();
+  updateBadges();
+}
+
 async function toggleWord(lang, word) {
+  if (wordMarkBusy) return;
+  wordMarkBusy = true;
   const key = wordKey(lang, word);
+  const previous = state.vocab[key];
   const was = Boolean(state.vocab[key]);
   if (was) delete state.vocab[key];
   else state.vocab[key] = new Date().toISOString();
   writeCache("burgut.vocab", state.vocab);
-  renderCurrent();
-  updateBadges();
+  refreshWordMarks();
 
   try {
     const data = await api("/api/vocab", jsonBody({ keys: [key], learned: !was }, "PATCH"));
@@ -699,19 +748,21 @@ async function toggleWord(lang, word) {
     }
     state.errors.vocab = null;
   } catch (err) {
-    if (was) state.vocab[key] = new Date().toISOString();
+    if (was) state.vocab[key] = previous;
     else delete state.vocab[key];
     writeCache("burgut.vocab", state.vocab);
     state.errors.vocab = err.message;
     toast(`Saqlanmadi: ${err.message}`);
   }
-  renderCurrent();
-  updateBadges();
+  wordMarkBusy = false;
+  refreshWordMarks();
 }
 
 async function markAllWords(lang, learned) {
+  if (wordMarkBusy) return;
   const items = dailyWords()[lang];
   if (!items.length) return;
+  wordMarkBusy = true;
   const snapshot = { ...state.vocab };
   for (const item of items) {
     const key = wordKey(lang, item.w);
@@ -719,8 +770,7 @@ async function markAllWords(lang, learned) {
     else delete state.vocab[key];
   }
   writeCache("burgut.vocab", state.vocab);
-  renderCurrent();
-  updateBadges();
+  refreshWordMarks();
 
   try {
     const keys = items.map((item) => wordKey(lang, item.w));
@@ -737,8 +787,8 @@ async function markAllWords(lang, learned) {
     state.errors.vocab = err.message;
     toast(`Saqlanmadi: ${err.message}`);
   }
-  renderCurrent();
-  updateBadges();
+  wordMarkBusy = false;
+  refreshWordMarks();
 }
 
 let activeWordAudio = null;
