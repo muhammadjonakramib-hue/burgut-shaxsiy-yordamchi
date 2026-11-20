@@ -1,4 +1,4 @@
-const CACHE = "burgut-offline-v5";
+const CACHE = "burgut-offline-v6";
 const SHELL = [
   "./",
   "./index.html",
@@ -27,7 +27,7 @@ const SHELL = [
 self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(CACHE)
-      .then((c) => c.addAll(SHELL))
+      .then((c) => c.addAll(SHELL.map(path => new Request(path, {cache:'reload'}))))
       .then(() => self.skipWaiting())
   );
 });

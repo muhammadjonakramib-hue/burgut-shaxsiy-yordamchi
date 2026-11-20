@@ -654,9 +654,9 @@ function renderWords() {
   }
   if(state.wordLang!=='en'&&!sets.tr.length)html+='<div class="card">Bugungi yangi turkcha so‘zlar tugadi yoki daraja so‘zlari o‘rganilmoqda. Takrorlash navbati Test bo‘limida saqlanadi.</div>';
   const dueCount=Object.values(state.personal?.cards || {}).filter(c=>Date.parse(c.dueAt)<=Date.now()).length;
-  html += `<div class="card study-status"><h3>${dueCount} ta so‘zning takrorlash vaqti keldi</h3><p class="hint">Bilmayman → 1 daqiqa. Qiyin → 1 kun. Bilaman → 1, 3, 7, 15, 30, 60, 90, 180, 365 kun. Oldingi kunlardagi so‘zlar ham navbatga qaytadi.</p><button class="btn ghost" data-word-mode="quiz">Takrorlashni boshlash</button><p class="hint" role="status">${pendingReviews().length ? `${pendingReviews().length} ta javob shu qurilmada saqlangan, serverga yuborilishi kutilmoqda.` : 'Javoblar Supabase bilan sinxronlanadi.'}</p>${state.personalError?`<p class="hint">${esc(state.personalError)}</p>`:''}<button class="btn ghost small" data-study-sync>Sinxronlash</button></div>`;
+  html += `<div class="card study-status"><h3 data-due-count>${dueCount} ta so‘zning takrorlash vaqti keldi</h3><p class="hint">Bilmayman → 1 daqiqa. Qiyin → 1 kun. Bilaman → 1, 3, 7, 15, 30, 60, 90, 180, 365 kun. Oldingi kunlardagi so‘zlar ham navbatga qaytadi.</p><button class="btn ghost" data-word-mode="quiz">Takrorlashni boshlash</button><p class="hint" role="status" data-review-pending>${pendingReviews().length ? `${pendingReviews().length} ta javob shu qurilmada saqlangan, serverga yuborilishi kutilmoqda.` : 'Javoblar Supabase bilan sinxronlanadi.'}</p><p class="hint" data-personal-error>${esc(state.personalError||'')}</p><button class="btn ghost small" data-study-sync>Sinxronlash</button></div>`;
   html += `<p class="footer-note">✓ belgisi kun almashganda ham saqlanadi. Takrorlash jadvali Testdagi javobingizga ko‘ra o‘zgaradi.</p>`;
-  html += cloudStatusMarkup();
+  html += `<div data-word-cloud-status>${cloudStatusMarkup()}</div>`;
   html += '<button class="btn ghost small" data-words-theme>Yorug‘ / qorong‘i ko‘rinish</button>';
   $("#view-words").innerHTML = html;
   $('#view-words').dataset.theme=readCache('burgut.words.theme',matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
@@ -727,6 +727,32 @@ function refreshWordMarks() {
     warning.textContent = `Belgilar saqlanmadi: ${state.errors.vocab}`;
   } else warning?.remove();
   updateBadges();
+}
+
+// Background sync must not replace cards or restart an in-progress quiz.
+function refreshAfterSync() {
+  if (state.tab !== 'words') { renderCurrent(); return; }
+  if (state.wordMode === 'list') {
+    const sets = dailyWords();
+    const expected = ['tr','en'].flatMap(lang => state.wordLang !== 'all' && state.wordLang !== lang ? [] : sets[lang]
+      .filter(item => !state.wordQuery || `${item.w} ${item.t} ${item.ex}`.toLocaleLowerCase().includes(state.wordQuery.toLocaleLowerCase()))
+      .map(item => `${lang}|${item.w}`));
+    const shown = $$('#view-words [data-word-toggle]').map(b => `${b.dataset.lang}|${b.dataset.word}`);
+    if (JSON.stringify(expected) !== JSON.stringify(shown)) { renderWords(); return; }
+  }
+  refreshWordMarks();
+  const stats = state.personal?.stats || {};
+  const values = [stats.attempts || 0, `${stats.attempts ? Math.round(stats.correct / stats.attempts * 100) : 0}%`, stats.streak || 0];
+  $$('#view-words .word-dashboard b').forEach((el, i) => { el.textContent = values[i]; });
+  const due = $('#view-words [data-due-count]');
+  if (due) due.textContent = `${Object.values(state.personal?.cards || {}).filter(c => Date.parse(c.dueAt) <= Date.now()).length} ta so‘zning takrorlash vaqti keldi`;
+  const pending = $('#view-words [data-review-pending]');
+  if (pending) pending.textContent = pendingReviews().length ? `${pendingReviews().length} ta javob shu qurilmada saqlangan, serverga yuborilishi kutilmoqda.` : 'Javoblar Supabase bilan sinxronlanadi.';
+  const error = $('#view-words [data-personal-error]');
+  if (error) error.textContent = state.personalError || '';
+  const cloud = $('#view-words [data-word-cloud-status]');
+  if (cloud) { const html = cloudStatusMarkup(); if (cloud.innerHTML !== html) cloud.innerHTML = html; }
+
 }
 
 async function toggleWord(lang, word) {
@@ -2040,7 +2066,7 @@ async function loadAll() {
   state.loaded = true;
   await syncStudy();
   await syncCloud();
-  renderCurrent();
+  refreshAfterSync();
 }
 
 // ——————————————— Hodisalar ———————————————
@@ -2321,9 +2347,9 @@ $("#btn-refresh").addEventListener("click", async () => {
 
   let currentDay = todayKey();
   const refreshPersonalView=()=>{
-    if(state.studyBusy)return;
+    if(state.studyBusy || wordMarkBusy)return;
     syncStudy().then(()=>{
-      if(['words','today','expenses','plans'].includes(state.tab)&&!document.activeElement?.matches('input,textarea,select'))renderCurrent();
+      if(['words','today','expenses','plans'].includes(state.tab)&&!document.activeElement?.matches('input,textarea,select'))refreshAfterSync();
     });
   };
   window.addEventListener('online',refreshPersonalView);
@@ -2333,7 +2359,7 @@ $("#btn-refresh").addEventListener("click", async () => {
     if (!document.hidden && state.tab === 'news' && state.newsView !== 'football') loadWeekly(false);
   });
   setInterval(() => {
-    if(!document.hidden && ['words','expenses','plans','today'].includes(state.tab) && !state.studyBusy && !document.activeElement?.matches('input,textarea,select'))syncStudy().then(()=>renderCurrent());
+    if(!document.hidden && ['words','expenses','plans','today'].includes(state.tab) && !state.studyBusy && !wordMarkBusy && !document.activeElement?.matches('input,textarea,select'))syncStudy().then(()=>refreshAfterSync());
     if (!document.hidden && state.tab === "news" && state.newsView === "football") loadFootball(false);
     if (!document.hidden && state.tab === 'news' && state.newsView !== 'football' && Date.now() - new Date(state.weekly?.generatedAt || 0).getTime() >= 30 * 60 * 1000) loadWeekly(false);
     if (todayKey() !== currentDay) {
